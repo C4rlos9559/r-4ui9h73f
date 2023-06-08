@@ -1,20 +1,28 @@
-import React from "react";
-import "./style.css";
+import React, { Component } from "react";
+import "./App.css";
 
-export default function App() {
-  const [value, setValue] = React.useState("");
-  const handleChange = (event) => {
-    setValue(event.target.value);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { val: 0 };
+  }
+
+  getVal = (event) => {
+    this.setState({ val: event.target.value });
   };
-  return (
-    <div>
-      <h1>Un repetidor</h1>
-      <input
-        type="text"
-        placeholder="Empieza a escribir algo"
-        onChange={handleChange}
-      />
-      <p className="repeater">{value}</p>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <h1>Un repetidor</h1>
+        <input
+          type="text"
+          placeholder="Empieza a escribir algo"
+          onChange={this.getVal}
+        />
+        <p className="repeater">{this.state.val}</p>
+      </div>
+    );
+  }
 }
+
+export default App;
